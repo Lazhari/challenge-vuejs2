@@ -1,38 +1,93 @@
 <div id="app">
-    <el-row>
-        <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-            <el-menu-item index="1">Processing Center</el-menu-item>
-            <el-submenu index="2">
-                <template slot="title">Workspace</template>
-                <el-menu-item index="2-1">item one</el-menu-item>
-                <el-menu-item index="2-2">item two</el-menu-item>
-                <el-menu-item index="2-3">item three</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">Orders</a></el-menu-item>
-        </el-menu>
-    </el-row>
+   <header>
+         <img id="logo" src="./assets/images/page-1-1@2x.png" alt="linkry logo">
+         <h2>Welcome. Let's get started.</h2>
+      <p>Step 1 of 4: Tell us a bit about your Event.</p>
+   </header>
+   <div class="container">
+  <el-row :gutter="20">
+         <el-col :span="12"><div class="grid-content bg-purple">
+            <el-card class="box-card">
+               <el-row type="flex" :gutter="24">
+                  <el-col :span="12">
+                     <label>Name</label>
+                     <el-input placeholder="Name your event" v-model="input"></el-input>
+                  </el-col>
+                  <el-col :span="12" >
+                     <label>Short name</label>
+                     <el-input placeholder="Name your event" v-model="input"></el-input>
+                     <p id="input-para">The short name is used to construct the URL where people view your Event,
+                        ex: https://Linkry.events/L/sbmymullhdpwstf</p>
+                  </el-col>
+               </el-row>
+               <label>Descreption</label>
+               <el-input
+                  type="textarea"
+                  :rows="4"
+                  placeholder="describe your event"
+                  >
+             </el-input>
+             <p id="input-para">A brief paragraph to describe your Event.</p>
+             <el-row type="flex" :gutter="24">
+                  <el-col :span="8">
+                              <p>Duration</p>
+                         <el-date-picker 
+                              v-model="startDate"
+                              type="date"
+                              placeholder="Start date">
+                          </el-date-picker>
+                  </el-col>
+                  <el-col :span="8">
+               <p class="hidden">Duration</p>
 
-    <el-row :gutter="20">
-        <el-col :span="4">
-            <el-menu default-active="/" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" theme="dark" :router="true">
-                <el-submenu index="1">
-                    <template slot="title">
-                  <i class="el-icon-menu"></i>
-                  Training
-              </template>
-                    <el-menu-item-group>
-                        <el-menu-item index="/" :default-active="activeLink">Home</el-menu-item>
-                        <el-menu-item index="/forms">Forms</el-menu-item>
-                        <el-menu-item index="/events-list">Events List</el-menu-item>
-                    </el-menu-item-group>
-                </el-submenu>
-                <el-menu-item index="2">Navigator Two</el-menu-item>
-                <el-menu-item index="3">Navigator Three</el-menu-item>
-            </el-menu>
-        </el-col>
+                   <el-date-picker 
+                               v-model="endDate"
+                                type="date"
+                                placeholder="End date">
+                          </el-date-picker>
+             </el-col>
+             <el-col :span="10">
+                   <p>Location</p>
+                  <el-select v-model="value" placeholder="Select Location">
+                        <el-option
+                              v-for="locations in location"
+                              :key="item.value"
+                              :label="item.label"
+                              :value="item.value">
+                        </el-option>
+                  </el-select>
+             </el-col>
+            
+             </el-row>
+             <p id="input-para">You can not update the date after publishing your guide.</p>
+             <p id="input-para"><a href="/">Does this Event run indefinitely?</a></p>
+             <div class="submition">
+                   <el-button type="primary" size="large">Save and Continue</el-button>
 
-        <el-col :span="20">
-            <router-view></router-view>
-        </el-col>
-    </el-row>
+             </div>
+            </el-card>
+         </div>
+         </el-col>
+         <el-col :span="8"><div class="grid-content bg-purple">
+            <el-card class="box-card">
+              <h2>
+                 Branding your Events
+              </h2>
+               <p>
+                  You are on your way to creating an extremely useful, wonderfully eco-friendly,
+                  and pleasantly elegant mobile Event. With Linkry Events, it is extremely
+                  simple to put information right in your audience hands, and it all
+                  starts here with our event builder.
+                  </p>
+               <p>
+                  With a few short steps, you will have a complete guide that can be published and
+                  ready to use. Do not worry - we will walk you through the process Start here by
+                  telling us a few details about your Event.
+               </p>
+            </el-card>
+         </div>
+         </el-col>
+      </el-row>
+   </div>
+    
 </div>
